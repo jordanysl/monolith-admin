@@ -1,0 +1,68 @@
+/**
+ * 系统日志
+ */
+@extendAbstractAuditingEntity
+@skipFakeData
+@entityPackage(log)
+@moduleName(log)
+@skipWebButton(listAdd-listEdit)
+@addCustomMethod(rest-queryService)
+entity SysLog {
+  logType LogType /** 日志类型 */
+  logContent String /** 日志内容 */
+  operateType OperateType /** 操作类型 */
+  userid String /** 操作用户账号 */
+  username String /** 操作用户名称 */
+  ip String /** IP */
+  method String /** 请求java方法 */
+  requestUrl String /** 请求路径 */
+  @endUsed(textArea)
+  requestParam TextBlob /** 请求参数 */
+  requestType String /** 请求类型 */
+  costTime Long /** 耗时 */
+}
+
+/** 数据权限规则 */
+@entityPackage(system)
+@extendAbstractAuditingEntity
+@skipFakeData
+@moduleName(system)
+entity DataPermissionRule {
+  permissionId String /** 菜单ID */
+  name String /** 规则名称 */
+  column String /** 字段 */
+  conditions String /** 条件 */
+  value String /** 规则值 */
+  disabled Boolean /** 禁用状态 */
+}
+
+/**
+ * 日志类型（1登录日志，2操作日志）
+ */
+enum LogType {
+	LOGIN /** 登录日志 */,
+    OPERATE /** 操作日志 */
+}
+
+enum OperateType {
+    LIST /** 列表 */,
+    ADD /** 新增 */,
+    EDIT /** 编辑 */,
+    DELETE /** 删除 */,
+    IMPORT /** 导入 */,
+    EXPORT /** 导出 */,
+    OTHER /** 其他 */,
+    LOGIN /** 登录 */,
+    STATS /** 统计 */,
+    VIEW /** 查看 */,
+    AUDIT /** 审核 */,
+    WORK_FLOW /** 工作流 */
+}
+
+service all with serviceClass
+filter *
+dto all with mapstruct
+paginate all with pagination
+clientRootFolder DataPermissionRule with system
+clientRootFolder SysLog with log
+//

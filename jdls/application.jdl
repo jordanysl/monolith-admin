@@ -1,0 +1,6 @@
+application {
+    config {
+        baseName monolith-admin
+    }
+    entities *
+}

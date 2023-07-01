@@ -1,0 +1,157 @@
+{
+  "addCustomMethod": "service-rest-dto-listComponent-clientService-editComponent",
+  "applications": "*",
+  "clientRootFolder": "files",
+  "dto": "mapstruct",
+  "entityTableName": "upload_image",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String",
+      "javadoc": "完整文件名\\n不含路径",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "文件名\\n不含扩展名",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "ext",
+      "fieldType": "String",
+      "javadoc": "扩展名",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "javadoc": "文件类型",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "javadoc": "Web Url地址",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "path",
+      "fieldType": "String",
+      "javadoc": "本地路径",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "folder",
+      "fieldType": "String",
+      "javadoc": "本地存储目录",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "ownerEntityName",
+      "fieldType": "String",
+      "javadoc": "使用实体名称",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "ownerEntityId",
+      "fieldType": "String",
+      "javadoc": "使用实体ID"
+    },
+    {
+      "fieldName": "businessTitle",
+      "fieldType": "String",
+      "javadoc": "业务标题"
+    },
+    {
+      "fieldName": "businessDesc",
+      "fieldType": "String",
+      "javadoc": "业务自定义描述内容"
+    },
+    {
+      "fieldName": "businessStatus",
+      "fieldType": "String",
+      "javadoc": "业务状态"
+    },
+    {
+      "fieldName": "createAt",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "创建时间",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "fileSize",
+      "fieldType": "Long",
+      "javadoc": "文件大小",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "smartUrl",
+      "fieldType": "String",
+      "javadoc": "小图Url",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "mediumUrl",
+      "fieldType": "String",
+      "javadoc": "中等图Url",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "referenceCount",
+      "fieldType": "Long",
+      "javadoc": "文件被引用次数",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    }
+  ],
+  "javadoc": "上传图片",
+  "jpaMetamodelFiltering": true,
+  "listBy": "list",
+  "moduleName": "oss",
+  "name": "UploadImage",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "所属分类",
+      "otherEntityField": "title",
+      "otherEntityName": "resourceCategory",
+      "otherEntityRelationshipName": "images",
+      "relationshipName": "category",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "replaceListComponentMethod": "newEntity",
+  "replaceServiceMethod": "save",
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipRestApi": "create",
+  "skipWebButton": "listAdd-listEdit-listModalEdit"
+}

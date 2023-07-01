@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityPackage": "settings",
+  "entityTableName": "region_code",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "名称"
+    },
+    {
+      "fieldName": "areaCode",
+      "fieldType": "String",
+      "javadoc": "地区代码"
+    },
+    {
+      "fieldName": "cityCode",
+      "fieldType": "String",
+      "javadoc": "城市代码"
+    },
+    {
+      "fieldName": "mergerName",
+      "fieldType": "String",
+      "javadoc": "全名"
+    },
+    {
+      "fieldName": "shortName",
+      "fieldType": "String",
+      "javadoc": "短名称"
+    },
+    {
+      "fieldName": "zipCode",
+      "fieldType": "String",
+      "javadoc": "邮政编码"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "RegionCodeLevel",
+      "fieldValues": "PROVINCE,CITY,COUNTY,TOWN,VILLAGE",
+      "javadoc": "等级"
+    },
+    {
+      "fieldName": "lng",
+      "fieldType": "Double",
+      "javadoc": "经度"
+    },
+    {
+      "fieldName": "lat",
+      "fieldType": "Double",
+      "javadoc": "纬度"
+    }
+  ],
+  "javadoc": "行政区划码",
+  "jpaMetamodelFiltering": true,
+  "microServiceCore": true,
+  "moduleName": "system",
+  "name": "RegionCode",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "子节点",
+      "otherEntityField": "name",
+      "otherEntityName": "regionCode",
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "children",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "javadoc": "上级节点",
+      "otherEntityField": "name",
+      "otherEntityName": "regionCode",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

@@ -1,0 +1,100 @@
+{
+  "addCustomMethod": "rest-queryService",
+  "applications": "*",
+  "clientRootFolder": "log",
+  "dto": "mapstruct",
+  "entityPackage": "log",
+  "entityTableName": "sys_log",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "logType",
+      "fieldType": "LogType",
+      "fieldTypeJavadoc": "日志类型（1登录日志，2操作日志）",
+      "fieldValues": "LOGIN,OPERATE",
+      "fieldValuesJavadocs": {
+        "LOGIN": "登录日志",
+        "OPERATE": "操作日志"
+      },
+      "javadoc": "日志类型"
+    },
+    {
+      "fieldName": "logContent",
+      "fieldType": "String",
+      "javadoc": "日志内容"
+    },
+    {
+      "fieldName": "operateType",
+      "fieldType": "OperateType",
+      "fieldValues": "LIST,ADD,EDIT,DELETE,IMPORT,EXPORT,OTHER,LOGIN,STATS,VIEW,AUDIT,WORK_FLOW",
+      "fieldValuesJavadocs": {
+        "ADD": "新增",
+        "AUDIT": "审核",
+        "DELETE": "删除",
+        "EDIT": "编辑",
+        "EXPORT": "导出",
+        "IMPORT": "导入",
+        "LIST": "列表",
+        "LOGIN": "登录",
+        "OTHER": "其他",
+        "STATS": "统计",
+        "VIEW": "查看",
+        "WORK_FLOW": "工作流"
+      },
+      "javadoc": "操作类型"
+    },
+    {
+      "fieldName": "userid",
+      "fieldType": "String",
+      "javadoc": "操作用户账号"
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "javadoc": "操作用户名称"
+    },
+    {
+      "fieldName": "ip",
+      "fieldType": "String",
+      "javadoc": "IP"
+    },
+    {
+      "fieldName": "method",
+      "fieldType": "String",
+      "javadoc": "请求java方法"
+    },
+    {
+      "fieldName": "requestUrl",
+      "fieldType": "String",
+      "javadoc": "请求路径"
+    },
+    {
+      "fieldName": "requestParam",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "javadoc": "请求参数",
+      "options": {
+        "endUsed": "textArea"
+      }
+    },
+    {
+      "fieldName": "requestType",
+      "fieldType": "String",
+      "javadoc": "请求类型"
+    },
+    {
+      "fieldName": "costTime",
+      "fieldType": "Long",
+      "javadoc": "耗时"
+    }
+  ],
+  "javadoc": "系统日志",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "log",
+  "name": "SysLog",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipWebButton": "listAdd-listEdit"
+}

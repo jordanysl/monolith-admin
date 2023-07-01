@@ -1,0 +1,71 @@
+{
+  "addCustomMethod": "service",
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityPackage": "settings",
+  "entityTableName": "dictionary",
+  "fields": [
+    {
+      "fieldName": "dictName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "字典名称"
+    },
+    {
+      "fieldName": "dictKey",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"],
+      "javadoc": "字典Key"
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean",
+      "javadoc": "是否禁用"
+    },
+    {
+      "fieldName": "sortValue",
+      "fieldType": "Integer",
+      "javadoc": "排序"
+    },
+    {
+      "fieldName": "builtIn",
+      "fieldType": "Boolean",
+      "javadoc": "是否内置",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "syncEnum",
+      "fieldType": "Boolean",
+      "javadoc": "更新枚举",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    }
+  ],
+  "javadoc": "数据字典",
+  "jpaMetamodelFiltering": true,
+  "microServiceCore": true,
+  "moduleName": "system",
+  "name": "Dictionary",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "字典项列表",
+      "options": {
+        "source": {
+          "annotationOnSource": "editInForm-editByTable-unidirectional-relateByIdEntity"
+        }
+      },
+      "otherEntityField": "name",
+      "otherEntityName": "commonFieldData",
+      "relationshipName": "items",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

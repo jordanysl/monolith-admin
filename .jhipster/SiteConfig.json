@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityPackage": "settings",
+  "entityTableName": "site_config",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "categoryName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "分类名称"
+    },
+    {
+      "fieldName": "categoryKey",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "分类Key"
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean",
+      "javadoc": "是否禁用"
+    },
+    {
+      "fieldName": "sortValue",
+      "fieldType": "Integer",
+      "javadoc": "排序"
+    },
+    {
+      "fieldName": "builtIn",
+      "fieldType": "Boolean",
+      "javadoc": "是否内置"
+    }
+  ],
+  "javadoc": "网站配置",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "SiteConfig",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "配置项列表",
+      "options": {
+        "source": {
+          "annotationOnSource": "editInForm-editByTable-unidirectional-relateByIdEntity"
+        }
+      },
+      "otherEntityField": "name",
+      "otherEntityName": "commonFieldData",
+      "relationshipName": "items",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

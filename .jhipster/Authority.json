@@ -1,0 +1,116 @@
+{
+  "addCustomMethod": "repository-service-queryService-updateComponent",
+  "applications": "*",
+  "clientRootFolder": "system",
+  "dto": "mapstruct",
+  "entityTableName": "jhi_authority",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "角色名称",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "javadoc": "角色代号",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "info",
+      "fieldType": "String",
+      "javadoc": "信息",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer",
+      "javadoc": "排序",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "display",
+      "fieldType": "Boolean",
+      "javadoc": "展示",
+      "options": {
+        "importDataField": true
+      }
+    }
+  ],
+  "importData": true,
+  "importDataFile": "jhi_authority-rel_jhi_authority__view_permissions",
+  "javadoc": "角色",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "Authority",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "子节点",
+      "otherEntityField": "name",
+      "otherEntityName": "authority",
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "children",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "javadoc": "菜单列表",
+      "options": {
+        "source": {
+          "annotationOnSource": "importData"
+        }
+      },
+      "otherEntityField": "text",
+      "otherEntityName": "viewPermission",
+      "otherEntityRelationshipName": "authorities",
+      "relationshipName": "viewPermissions",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "javadoc": "Api权限列表",
+      "otherEntityField": "name",
+      "otherEntityName": "apiPermission",
+      "otherEntityRelationshipName": "authorities",
+      "relationshipName": "apiPermissions",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "javadoc": "上级",
+      "otherEntityField": "name",
+      "otherEntityName": "authority",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "javadoc": "用户列表",
+      "options": {
+        "annotationOnSource": "importData",
+        "source": {
+          "annotationOnSource": "importData"
+        }
+      },
+      "otherEntityField": "firstName",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "authorities",
+      "relationshipName": "users",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

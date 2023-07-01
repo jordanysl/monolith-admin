@@ -1,0 +1,101 @@
+{
+  "addCustomMethod": "repository-service-rest-clientService-listComponent",
+  "applications": "*",
+  "clientRootFolder": "system",
+  "dto": "mapstruct",
+  "entityTableName": "api_permission",
+  "fields": [
+    {
+      "fieldName": "serviceName",
+      "fieldType": "String",
+      "javadoc": "服务名称"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "权限名称"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "javadoc": "权限描述"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ApiPermissionType",
+      "fieldTypeJavadoc": "Api权限类型",
+      "fieldValues": "BUSINESS,API,ENTITY,MICRO_SERVICE",
+      "fieldValuesJavadocs": {
+        "API": "API接口",
+        "BUSINESS": "业务",
+        "ENTITY": "实体",
+        "MICRO_SERVICE": "微服务"
+      },
+      "javadoc": "类型"
+    },
+    {
+      "fieldName": "method",
+      "fieldType": "String",
+      "javadoc": "请求类型"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "javadoc": "url 地址"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ApiPermissionState",
+      "fieldTypeJavadoc": "Api权限状态",
+      "fieldValues": "CONFIGURABLE,PERMIT_ALL,UNREACHABLE,AUTHENTICATE",
+      "fieldValuesJavadocs": {
+        "AUTHENTICATE": "认证",
+        "CONFIGURABLE": "可配置",
+        "PERMIT_ALL": "允许所有",
+        "UNREACHABLE": "不可达"
+      },
+      "javadoc": "状态"
+    }
+  ],
+  "javadoc": "API权限\\n菜单或按钮下有相关的api权限",
+  "jpaMetamodelFiltering": true,
+  "microServiceCore": true,
+  "moduleName": "system",
+  "name": "ApiPermission",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "子节点",
+      "otherEntityField": "name",
+      "otherEntityName": "apiPermission",
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "children",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "javadoc": "上级",
+      "otherEntityField": "name",
+      "otherEntityName": "apiPermission",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "javadoc": "角色列表",
+      "otherEntityField": "name",
+      "otherEntityName": "authority",
+      "otherEntityRelationshipName": "apiPermissions",
+      "relationshipName": "authorities",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

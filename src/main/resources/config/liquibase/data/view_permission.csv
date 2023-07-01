@@ -1,0 +1,9 @@
+id;text;i_18_n;group;link;external_link;target;icon;disabled;hide;hide_in_breadcrumb;shortcut;shortcut_root;reuse;code;description;type;order;api_permission_codes;parent_id;component_file;redirect
+1;主导航;;true;/;;TOP;;false;false;true;false;false;false;index;;MENU;1;;NULL;LAYOUT;/dashboard
+2;仪表盘;;false;/dashboard;;PARENT;ant-design:appstore-outlined;false;false;false;false;false;false;dashboard;;MENU;1;;1;LAYOUT;/dashboard/analysis
+3;分析页;;false;/dashboard/analysis;;BLANK;;false;false;false;false;false;false;dashboard-analysis;;MENU;0;;2;dashboard/Analysis;
+77;设置;;true;/settings;;NULL;;false;false;true;false;false;false;settings;;MENU;1;;NULL;LAYOUT;/entities/system
+87;业务;;true;/entities;;NULL;;false;false;true;false;false;false;business;;MENU;1;;NULL;LAYOUT;
+105;系统设置;;false;/settings/system;;NULL;ion:settings-outline;false;false;false;false;false;false;settings-system;;MENU;1;;87;LAYOUT;
+107;缓存管理;;false;/system/cache-manage;;SELF;;false;false;false;false;false;false;system-cache-manage;;MENU;1;;105;system/cache-manage/cache-manage;
+108;数据可视;;false;/entities/report;;SELF;ion:bar-chart-outline;false;false;false;false;false;false;report;;MENU;1;;87;LAYOUT;

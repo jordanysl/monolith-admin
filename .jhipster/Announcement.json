@@ -1,0 +1,124 @@
+{
+  "addCustomMethod": "repository-updateTemplate-clientService-service-listComponent-rest",
+  "applications": "*",
+  "clientRootFolder": "system",
+  "dto": "mapstruct",
+  "entityPackage": "system",
+  "entityTableName": "announcement",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "javadoc": "标题"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "javadoc": "内容"
+    },
+    {
+      "fieldName": "startTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "开始时间"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "结束时间"
+    },
+    {
+      "fieldName": "senderId",
+      "fieldType": "Long",
+      "javadoc": "发布人Id"
+    },
+    {
+      "fieldName": "priority",
+      "fieldType": "PriorityLevel",
+      "fieldValues": "HIGH,MEDIUM,LOW",
+      "javadoc": "优先级\\n（L低，M中，H高）"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "AnnoCategory",
+      "fieldValues": "SYSTEM_INFO,NOTICE,TODO",
+      "javadoc": "消息类型\\n通知公告,系统消息"
+    },
+    {
+      "fieldName": "receiverType",
+      "fieldType": "ReceiverType",
+      "fieldValues": "USER,ALL,DEPARTMENT,AUTHORITY,POSITION",
+      "javadoc": "通告对象类型\\n（USER:指定用户，ALL:全体用户）"
+    },
+    {
+      "fieldName": "sendStatus",
+      "fieldType": "AnnoSendStatus",
+      "fieldValues": "NOT_RELEASE,RELEASED,CANCELED",
+      "javadoc": "发布状态\\n",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "sendTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "发布时间",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "cancelTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "撤销时间",
+      "options": {
+        "fieldConfig": "hideInForm"
+      }
+    },
+    {
+      "fieldName": "businessType",
+      "fieldType": "AnnoBusinessType",
+      "fieldValues": "EMAIL,WORKFLOW",
+      "javadoc": "业务类型\\n(email:邮件 bpm:流程)"
+    },
+    {
+      "fieldName": "businessId",
+      "fieldType": "Long",
+      "javadoc": "业务id"
+    },
+    {
+      "fieldName": "openType",
+      "fieldType": "AnnoOpenType",
+      "fieldTypeJavadoc": "打开方式(组件：component 路由：url 弹窗显示:MODAL_DETAIL)",
+      "fieldValues": "URL,COMPONENT,MODAL_DETAIL",
+      "javadoc": "打开方式"
+    },
+    {
+      "fieldName": "openPage",
+      "fieldType": "String",
+      "javadoc": "组件/路由 地址"
+    },
+    {
+      "fieldName": "receiverIds",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "javadoc": "指定接收者id"
+    },
+    {
+      "fieldName": "summary",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "javadoc": "摘要"
+    }
+  ],
+  "javadoc": "系统通告",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "Announcement",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "useTemplate": "edit"
+}

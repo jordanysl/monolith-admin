@@ -1,0 +1,41 @@
+{
+  "addCustomMethod": "repository-service-listComponent",
+  "applications": "*",
+  "clientRootFolder": "report",
+  "dto": "mapstruct",
+  "entityTableName": "u_report_file",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "名称"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "javadoc": "内容"
+    },
+    {
+      "fieldName": "createAt",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "创建时间"
+    },
+    {
+      "fieldName": "updateAt",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "更新时间"
+    }
+  ],
+  "javadoc": "报表存储",
+  "jpaMetamodelFiltering": true,
+  "listBy": "list",
+  "moduleName": "report",
+  "name": "UReportFile",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipWebButton": "listAdd"
+}

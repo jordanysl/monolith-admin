@@ -1,0 +1,88 @@
+{
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityPackage": "settings",
+  "entityTableName": "common_field_data",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "名称"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "javadoc": "字段值"
+    },
+    {
+      "fieldName": "label",
+      "fieldType": "String",
+      "javadoc": "字段标题"
+    },
+    {
+      "fieldName": "valueType",
+      "fieldType": "CommonFieldType",
+      "fieldTypeJavadoc": "字段类型\\n",
+      "fieldValues": "INTEGER,LONG,BOOLEAN,STRING,FLOAT,DOUBLE,ZONED_DATE_TIME,LOCATE_DATE,BIG_DECIMAL,TEXTBLOB,IMAGEBLOB,ARRAY,ENUM,UPLOAD_IMAGE,UPLOAD_FILE,ENTITY,RADIO,MULTI_SELECT,DATA_DICTIONARY,UUID,INSTANT",
+      "fieldValuesJavadocs": {
+        "ARRAY": "数组",
+        "BIG_DECIMAL": "大数字",
+        "BOOLEAN": "布尔",
+        "DATA_DICTIONARY": "数据字典",
+        "DOUBLE": "双精度",
+        "ENTITY": "实体",
+        "ENUM": "枚举",
+        "FLOAT": "单精度",
+        "IMAGEBLOB": "大图片",
+        "INSTANT": "时间戳",
+        "INTEGER": "整数",
+        "LOCATE_DATE": "本地日期",
+        "LONG": "长整数",
+        "MULTI_SELECT": "多选",
+        "RADIO": "单选",
+        "STRING": "字符串",
+        "TEXTBLOB": "大文本",
+        "UPLOAD_FILE": "上传文件",
+        "UPLOAD_IMAGE": "上传图片",
+        "UUID": "UUID",
+        "ZONED_DATE_TIME": "日期时间"
+      },
+      "javadoc": "字段类型"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "String",
+      "javadoc": "说明"
+    },
+    {
+      "fieldName": "sortValue",
+      "fieldType": "Integer",
+      "javadoc": "排序"
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean",
+      "javadoc": "是否禁用"
+    },
+    {
+      "fieldName": "ownerEntityName",
+      "fieldType": "String",
+      "javadoc": "实体名称"
+    },
+    {
+      "fieldName": "ownerEntityId",
+      "fieldType": "String",
+      "javadoc": "使用实体ID"
+    }
+  ],
+  "javadoc": "通用字段数据",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "CommonFieldData",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipMenu": true
+}

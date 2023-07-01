@@ -1,0 +1,229 @@
+{
+  "addCustomMethod": "repository-service-rest-clientService",
+  "applications": "*",
+  "clientRootFolder": "system",
+  "dto": "mapstruct",
+  "entityTableName": "view_permission",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "权限名称",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "i18n",
+      "fieldType": "String",
+      "javadoc": "i18n主键",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "group",
+      "fieldType": "Boolean",
+      "javadoc": "显示分组名",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String",
+      "javadoc": "路由",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "externalLink",
+      "fieldType": "String",
+      "javadoc": "外部链接",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "target",
+      "fieldType": "TargetType",
+      "fieldTypeJavadoc": "链接目标",
+      "fieldValues": "BLANK,SELF,PARENT,TOP",
+      "fieldValuesJavadocs": {
+        "BLANK": "新窗口",
+        "PARENT": "父窗口",
+        "SELF": "当前窗口",
+        "TOP": "顶层窗口"
+      },
+      "javadoc": "链接目标",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "icon",
+      "fieldType": "String",
+      "javadoc": "图标",
+      "options": {
+        "endUsed": "iconPicker",
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "disabled",
+      "fieldType": "Boolean",
+      "javadoc": "禁用菜单",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "hide",
+      "fieldType": "Boolean",
+      "javadoc": "隐藏菜单",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "hideInBreadcrumb",
+      "fieldType": "Boolean",
+      "javadoc": "隐藏面包屑",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "shortcut",
+      "fieldType": "Boolean",
+      "javadoc": "快捷菜单项",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "shortcutRoot",
+      "fieldType": "Boolean",
+      "javadoc": "菜单根节点",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "reuse",
+      "fieldType": "Boolean",
+      "javadoc": "允许复用",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "权限代码\\n(ROLE_开头)",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "javadoc": "权限描述",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ViewPermissionType",
+      "fieldTypeJavadoc": "可视权限类型",
+      "fieldValues": "MENU,BUTTON",
+      "fieldValuesJavadocs": {
+        "BUTTON": "按钮",
+        "MENU": "菜单"
+      },
+      "javadoc": "权限类型",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer",
+      "javadoc": "排序",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "apiPermissionCodes",
+      "fieldType": "String",
+      "javadoc": "api权限标识串",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "componentFile",
+      "fieldType": "String",
+      "javadoc": "组件名称",
+      "options": {
+        "importDataField": true
+      }
+    },
+    {
+      "fieldName": "redirect",
+      "fieldType": "String",
+      "javadoc": "重定向路径",
+      "options": {
+        "importDataField": true
+      }
+    }
+  ],
+  "importData": true,
+  "javadoc": "可视权限\\n权限分为菜单权限、按钮权限等\\n",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "ViewPermission",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "子节点",
+      "otherEntityField": "text",
+      "otherEntityName": "viewPermission",
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "children",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "javadoc": "上级",
+      "otherEntityField": "text",
+      "otherEntityName": "viewPermission",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parent",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "javadoc": "角色列表",
+      "options": {
+        "annotationOnSource": "importData",
+        "source": {
+          "annotationOnSource": "importData"
+        }
+      },
+      "otherEntityField": "name",
+      "otherEntityName": "authority",
+      "otherEntityRelationshipName": "viewPermissions",
+      "relationshipName": "authorities",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

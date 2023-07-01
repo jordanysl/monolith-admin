@@ -1,0 +1,74 @@
+{
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityPackage": "settings",
+  "entityTableName": "fill_rule_item",
+  "fields": [
+    {
+      "fieldName": "sortValue",
+      "fieldType": "Integer",
+      "javadoc": "排序值"
+    },
+    {
+      "fieldName": "fieldParamType",
+      "fieldType": "FieldParamType",
+      "fieldTypeJavadoc": "字段参数类型",
+      "fieldValues": "DATETIME (日期时间),NUMBER (数字序列),FIXED_CHAR (固定字符),PARAM (参数)",
+      "javadoc": "字段参数类型",
+      "options": {
+        "dict": true
+      }
+    },
+    {
+      "fieldName": "fieldParamValue",
+      "fieldType": "String",
+      "javadoc": "字段参数值"
+    },
+    {
+      "fieldName": "datePattern",
+      "fieldType": "String",
+      "javadoc": "日期格式"
+    },
+    {
+      "fieldName": "seqLength",
+      "fieldType": "Integer",
+      "javadoc": "序列长度"
+    },
+    {
+      "fieldName": "seqIncrement",
+      "fieldType": "Integer",
+      "javadoc": "序列增量"
+    },
+    {
+      "fieldName": "seqStartValue",
+      "fieldType": "Integer",
+      "javadoc": "序列起始值"
+    }
+  ],
+  "javadoc": "填充规则条目",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "FillRuleItem",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "填充规则",
+      "options": {
+        "annotationOnSource": "editInForm-editByTable-unidirectional",
+        "source": {
+          "annotationOnSource": "editInForm-editByTable-unidirectional"
+        }
+      },
+      "otherEntityField": "name",
+      "otherEntityName": "sysFillRule",
+      "otherEntityRelationshipName": "ruleItems",
+      "relationshipName": "fillRule",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipMenu": true
+}

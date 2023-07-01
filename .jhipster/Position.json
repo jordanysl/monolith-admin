@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "clientRootFolder": "settings",
+  "dto": "mapstruct",
+  "entityTableName": "position",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "unique", "required"],
+      "fieldValidateRulesMaxlength": "50",
+      "javadoc": "岗位代码"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "unique", "required"],
+      "fieldValidateRulesMaxlength": "50",
+      "javadoc": "名称"
+    },
+    {
+      "fieldName": "sortNo",
+      "fieldType": "Integer",
+      "javadoc": "排序"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200",
+      "javadoc": "描述"
+    }
+  ],
+  "javadoc": "岗位\\n",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "Position",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "javadoc": "员工列表",
+      "otherEntityField": "firstName",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "position",
+      "relationshipName": "users",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

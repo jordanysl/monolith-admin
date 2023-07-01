@@ -1,0 +1,40 @@
+{
+  "addCustomMethod": "service",
+  "applications": "*",
+  "clientRootFolder": "system",
+  "dto": "mapstruct",
+  "entityPackage": "system",
+  "entityTableName": "announcement_record",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "anntId",
+      "fieldType": "Long",
+      "javadoc": "通告ID"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long",
+      "javadoc": "用户id"
+    },
+    {
+      "fieldName": "hasRead",
+      "fieldType": "Boolean",
+      "javadoc": "是否已读"
+    },
+    {
+      "fieldName": "readTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "阅读时间"
+    }
+  ],
+  "javadoc": "通告阅读记录",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "system",
+  "name": "AnnouncementRecord",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true,
+  "skipMenu": true
+}

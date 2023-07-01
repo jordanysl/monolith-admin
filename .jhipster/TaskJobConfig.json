@@ -1,0 +1,58 @@
+{
+  "addCustomMethod": "service",
+  "applications": "*",
+  "clientRootFolder": "taskjob",
+  "dto": "mapstruct",
+  "entityPackage": "taskjob",
+  "entityTableName": "task_job_config",
+  "extendAbstractAuditingEntity": true,
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "任务名称"
+    },
+    {
+      "fieldName": "jobClassName",
+      "fieldType": "String",
+      "javadoc": "任务类名"
+    },
+    {
+      "fieldName": "cronExpression",
+      "fieldType": "String",
+      "javadoc": "cron表达式"
+    },
+    {
+      "fieldName": "parameter",
+      "fieldType": "String",
+      "javadoc": "参数"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "javadoc": "描述"
+    },
+    {
+      "fieldName": "jobStatus",
+      "fieldType": "JobStatus",
+      "fieldTypeJavadoc": "任务状态",
+      "fieldValues": "NORMAL,PAUSED,COMPLETE,ERROR,BLOCKED",
+      "fieldValuesJavadocs": {
+        "BLOCKED": "阻塞",
+        "COMPLETE": "完成",
+        "ERROR": "错误",
+        "NORMAL": "正常",
+        "PAUSED": "暂停"
+      },
+      "javadoc": "任务状态"
+    }
+  ],
+  "javadoc": "定时任务",
+  "jpaMetamodelFiltering": true,
+  "moduleName": "taskjob",
+  "name": "TaskJobConfig",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass",
+  "skipFakeData": true
+}

@@ -1,0 +1,11 @@
+export default {
+  logs: {
+    title: 'Logs',
+    nbloggers: 'There are {{ total }} loggers.',
+    filter: 'Filter',
+    table: {
+      name: 'Name',
+      level: 'Level',
+    },
+  },
+};
