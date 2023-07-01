@@ -1,8 +1,16 @@
 {
+  "addCustomMethod": "",
   "applications": "*",
+  "changelogDate": "20230701062749",
   "clientRootFolder": "files",
+  "commonField": false,
   "dto": "mapstruct",
+  "editInModal": false,
+  "entityCongigPro": "",
   "entityTableName": "resource_category",
+  "extendAbstractAuditingEntity": false,
+  "extendData": false,
+  "extensibleData": false,
   "fields": [
     {
       "fieldName": "title",
@@ -22,13 +30,48 @@
       "fieldName": "orderNumber",
       "fieldType": "Integer",
       "javadoc": "排序"
+    },
+    {
+      "fieldName": "delFlag",
+      "fieldType": "Boolean",
+      "javadoc": "软删除标志",
+      "options": {
+        "defaultValue": "false",
+        "fieldConfig": "hideInForm",
+        "logicDelete": true,
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除标志"
+    },
+    {
+      "fieldName": "deletedTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "软删除时间",
+      "options": {
+        "fieldConfig": "hideInForm",
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除时间"
     }
   ],
+  "fieldsContainParentAndChildren": true,
+  "importData": false,
+  "importDataFile": "",
   "javadoc": "资源分类",
   "jpaMetamodelFiltering": true,
+  "listBy": "table",
+  "microServiceCore": false,
   "moduleName": "oss",
+  "multiModel": false,
+  "multiModule": false,
   "name": "ResourceCategory",
+  "ormTool": "mybatis",
+  "otherModuleEntities": [],
   "pagination": "pagination",
+  "publicDto": "",
+  "reflexiveRelationshipFieldNames": [],
   "relationships": [
     {
       "javadoc": "文件列表",
@@ -67,6 +110,19 @@
       "relationshipType": "many-to-one"
     }
   ],
+  "replaceListComponentMethod": "",
+  "replaceServiceMethod": "",
+  "replaceUpdateComponentMethod": "",
+  "searchEngine": "no",
   "service": "serviceClass",
-  "skipFakeData": true
+  "skipComponent": "",
+  "skipDbSchema": false,
+  "skipFakeData": true,
+  "skipMenu": false,
+  "skipMultiTenant": false,
+  "skipRestApi": "",
+  "skipSoftDelete": false,
+  "skipWebButton": "",
+  "treeIndicatorFieldName": "title",
+  "useTemplate": false
 }

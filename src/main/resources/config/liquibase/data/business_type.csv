@@ -11,3 +11,5 @@ id;name;code;description;icon;deleted_time
 10;数据可视;report;数据可视;bar-chart-outline;NULL
 11;未分类;;未分类;anticon-file-text;NULL
 12;日志管理;log;日志管理;profile-outlined;NULL
+13;oss;oss;oss;ant-design:project-outline;NULL
+14;taskjob;taskjob;taskjob;ant-design:project-outline;NULL

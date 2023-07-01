@@ -1,9 +1,16 @@
 {
   "addCustomMethod": "repository-service-listComponent",
   "applications": "*",
+  "changelogDate": "20230701062747",
   "clientRootFolder": "report",
+  "commonField": false,
   "dto": "mapstruct",
+  "editInModal": false,
+  "entityCongigPro": "",
   "entityTableName": "u_report_file",
+  "extendAbstractAuditingEntity": false,
+  "extendData": false,
+  "extensibleData": false,
   "fields": [
     {
       "fieldName": "name",
@@ -26,16 +33,62 @@
       "fieldName": "updateAt",
       "fieldType": "ZonedDateTime",
       "javadoc": "更新时间"
+    },
+    {
+      "fieldName": "delFlag",
+      "fieldType": "Boolean",
+      "javadoc": "软删除标志",
+      "options": {
+        "defaultValue": "false",
+        "fieldConfig": "hideInForm",
+        "logicDelete": true,
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除标志"
+    },
+    {
+      "fieldName": "deletedTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "软删除时间",
+      "options": {
+        "fieldConfig": "hideInForm",
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除时间"
     }
   ],
+  "fieldsContainParentAndChildren": false,
+  "importData": false,
+  "importDataFile": "",
   "javadoc": "报表存储",
   "jpaMetamodelFiltering": true,
   "listBy": "list",
+  "microServiceCore": false,
   "moduleName": "report",
+  "multiModel": false,
+  "multiModule": false,
   "name": "UReportFile",
+  "ormTool": "mybatis",
+  "otherModuleEntities": [],
   "pagination": "pagination",
+  "publicDto": "",
+  "reflexiveRelationshipFieldNames": [],
   "relationships": [],
+  "replaceListComponentMethod": "",
+  "replaceServiceMethod": "",
+  "replaceUpdateComponentMethod": "",
+  "searchEngine": "no",
   "service": "serviceClass",
+  "skipComponent": "",
+  "skipDbSchema": false,
   "skipFakeData": true,
-  "skipWebButton": "listAdd"
+  "skipMenu": false,
+  "skipMultiTenant": false,
+  "skipRestApi": "",
+  "skipSoftDelete": false,
+  "skipWebButton": "listAdd",
+  "treeIndicatorFieldName": "",
+  "useTemplate": false
 }

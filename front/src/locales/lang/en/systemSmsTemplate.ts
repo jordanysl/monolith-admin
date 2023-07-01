@@ -1,0 +1,47 @@
+export default {
+  monolithAdminApp: {
+    systemSmsTemplate: {
+      home: {
+        title: 'Sms Templates',
+        refreshListLabel: 'Refresh list',
+        createLabel: 'Create a new Sms Template',
+        createOrEditLabel: 'Create or edit a Sms Template',
+        notFound: 'No Sms Templates found',
+      },
+      created: 'A new Sms Template is created with identifier {{ param }}',
+      updated: 'A Sms Template is updated with identifier {{ param }}',
+      deleted: 'A Sms Template is deleted with identifier {{ param }}',
+      delete: {
+        question: 'Are you sure you want to delete Sms Template {{ id }}?',
+      },
+      detail: {
+        title: 'Sms Template',
+      },
+      id: 'ID',
+      name: 'Name',
+      code: 'Code',
+      type: 'Type',
+      content: 'Content',
+      testJson: 'Test Json',
+      createdBy: 'Created By',
+      createdDate: 'Created Date',
+      lastModifiedBy: 'Last Modified By',
+      lastModifiedDate: 'Last Modified Date',
+      delFlag: 'Del Flag',
+      deletedTime: 'Deleted Time',
+      help: {
+        name: '模板标题',
+        code: '模板CODE',
+        type: '模板类型',
+        content: '模板内容',
+        testJson: '模板测试json',
+        createdBy: '创建者Id',
+        createdDate: '创建时间',
+        lastModifiedBy: '修改者Id',
+        lastModifiedDate: '修改时间',
+        delFlag: '软删除标志',
+        deletedTime: '软删除时间',
+      },
+    },
+  },
+};

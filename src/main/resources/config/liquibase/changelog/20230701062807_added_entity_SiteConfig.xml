@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity SiteConfig.
+    -->
+        <changeSet id="20230701062807-1" author="jhipster">
+        <createTable tableName="site_config" remarks="网站配置">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="category_name" type="varchar(255)" remarks="分类名称">
+                <constraints nullable="false" />
+            </column>
+            <column name="category_key" type="varchar(255)" remarks="分类Key">
+                <constraints nullable="false" />
+            </column>
+            <column name="disabled" type="boolean" remarks="是否禁用">
+                <constraints nullable="true" />
+            </column>
+            <column name="sort_value" type="integer" remarks="排序">
+                <constraints nullable="true" />
+            </column>
+            <column name="built_in" type="boolean" remarks="是否内置">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="bigint" remarks="创建者Id">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="${datetimeType}" remarks="创建时间">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_by" type="bigint" remarks="修改者Id">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_date" type="${datetimeType}" remarks="修改时间">
+                <constraints nullable="true" />
+            </column>
+            <column name="del_flag" defaultValue="0" type="boolean" remarks="软删除标志">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_time" type="${datetimeType}" remarks="软删除时间">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="site_config" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="site_config" columnName="last_modified_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="site_config" columnName="deleted_time" columnDataType="${datetimeType}"/>
+    </changeSet>
+    
+    
+    
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+</databaseChangeLog>

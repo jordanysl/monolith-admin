@@ -1,0 +1,39 @@
+export default {
+  monolithAdminApp: {
+    filesSmsSupplier: {
+      home: {
+        title: 'Sms Suppliers',
+        refreshListLabel: 'Refresh list',
+        createLabel: 'Create a new Sms Supplier',
+        createOrEditLabel: 'Create or edit a Sms Supplier',
+        notFound: 'No Sms Suppliers found',
+      },
+      created: 'A new Sms Supplier is created with identifier {{ param }}',
+      updated: 'A Sms Supplier is updated with identifier {{ param }}',
+      deleted: 'A Sms Supplier is deleted with identifier {{ param }}',
+      delete: {
+        question: 'Are you sure you want to delete Sms Supplier {{ id }}?',
+      },
+      detail: {
+        title: 'Sms Supplier',
+      },
+      id: 'ID',
+      provider: 'Provider',
+      configData: 'Config Data',
+      signName: 'Sign Name',
+      remark: 'Remark',
+      enabled: 'Enabled',
+      delFlag: 'Del Flag',
+      deletedTime: 'Deleted Time',
+      help: {
+        provider: '提供商',
+        configData: '配置数据',
+        signName: '短信签名',
+        remark: '备注',
+        enabled: '启用',
+        delFlag: '软删除标志',
+        deletedTime: '软删除时间',
+      },
+    },
+  },
+};

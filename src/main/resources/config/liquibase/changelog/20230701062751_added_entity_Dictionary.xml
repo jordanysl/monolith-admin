@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Dictionary.
+    -->
+        <changeSet id="20230701062751-1" author="jhipster">
+        <createTable tableName="dictionary" remarks="数据字典">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="dict_name" type="varchar(255)" remarks="字典名称">
+                <constraints nullable="false" />
+            </column>
+            <column name="dict_key" type="varchar(255)" remarks="字典Key">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_dictionary__dict_key" />
+            </column>
+            <column name="disabled" type="boolean" remarks="是否禁用">
+                <constraints nullable="true" />
+            </column>
+            <column name="sort_value" type="integer" remarks="排序">
+                <constraints nullable="true" />
+            </column>
+            <column name="built_in" type="boolean" remarks="是否内置">
+                <constraints nullable="true" />
+            </column>
+            <column name="sync_enum" type="boolean" remarks="更新枚举">
+                <constraints nullable="true" />
+            </column>
+            <column name="del_flag" defaultValue="0" type="boolean" remarks="软删除标志">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_time" type="${datetimeType}" remarks="软删除时间">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="dictionary" columnName="deleted_time" columnDataType="${datetimeType}"/>
+    </changeSet>
+    
+    
+    
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+</databaseChangeLog>

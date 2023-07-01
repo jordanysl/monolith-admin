@@ -1,9 +1,17 @@
 {
+  "addCustomMethod": "",
   "applications": "*",
+  "changelogDate": "20230701062748",
   "clientRootFolder": "settings",
+  "commonField": false,
   "dto": "mapstruct",
+  "editInModal": false,
+  "entityCongigPro": "",
   "entityPackage": "settings",
   "entityTableName": "fill_rule_item",
+  "extendAbstractAuditingEntity": false,
+  "extendData": false,
+  "extensibleData": false,
   "fields": [
     {
       "fieldName": "sortValue",
@@ -44,13 +52,48 @@
       "fieldName": "seqStartValue",
       "fieldType": "Integer",
       "javadoc": "序列起始值"
+    },
+    {
+      "fieldName": "delFlag",
+      "fieldType": "Boolean",
+      "javadoc": "软删除标志",
+      "options": {
+        "defaultValue": "false",
+        "fieldConfig": "hideInForm",
+        "logicDelete": true,
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除标志"
+    },
+    {
+      "fieldName": "deletedTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "软删除时间",
+      "options": {
+        "fieldConfig": "hideInForm",
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除时间"
     }
   ],
+  "fieldsContainParentAndChildren": false,
+  "importData": false,
+  "importDataFile": "",
   "javadoc": "填充规则条目",
   "jpaMetamodelFiltering": true,
+  "listBy": "table",
+  "microServiceCore": false,
   "moduleName": "system",
+  "multiModel": false,
+  "multiModule": false,
   "name": "FillRuleItem",
+  "ormTool": "mybatis",
+  "otherModuleEntities": [],
   "pagination": "pagination",
+  "publicDto": "",
+  "reflexiveRelationshipFieldNames": [],
   "relationships": [
     {
       "javadoc": "填充规则",
@@ -68,7 +111,19 @@
       "relationshipType": "many-to-one"
     }
   ],
+  "replaceListComponentMethod": "",
+  "replaceServiceMethod": "",
+  "replaceUpdateComponentMethod": "",
+  "searchEngine": "no",
   "service": "serviceClass",
+  "skipComponent": "",
+  "skipDbSchema": false,
   "skipFakeData": true,
-  "skipMenu": true
+  "skipMenu": true,
+  "skipMultiTenant": false,
+  "skipRestApi": "",
+  "skipSoftDelete": false,
+  "skipWebButton": "",
+  "treeIndicatorFieldName": "",
+  "useTemplate": false
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity SmsSupplier.
+    -->
+        <changeSet id="20230701062754-1" author="jhipster">
+        <createTable tableName="sms_supplier" remarks="短信服务配置">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="provider" type="varchar(255)" remarks="提供商">
+                <constraints nullable="true" />
+            </column>
+            <column name="config_data" type="varchar(255)" remarks="配置数据">
+                <constraints nullable="true" />
+            </column>
+            <column name="sign_name" type="varchar(255)" remarks="短信签名">
+                <constraints nullable="true" />
+            </column>
+            <column name="remark" type="varchar(255)" remarks="备注">
+                <constraints nullable="true" />
+            </column>
+            <column name="enabled" type="boolean" remarks="启用">
+                <constraints nullable="true" />
+            </column>
+            <column name="del_flag" defaultValue="0" type="boolean" remarks="软删除标志">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted_time" type="${datetimeType}" remarks="软删除时间">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="sms_supplier" columnName="deleted_time" columnDataType="${datetimeType}"/>
+    </changeSet>
+    
+    
+    
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+</databaseChangeLog>

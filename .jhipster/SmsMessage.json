@@ -1,10 +1,17 @@
 {
+  "addCustomMethod": "",
   "applications": "*",
+  "changelogDate": "20230701062808",
   "clientRootFolder": "system",
+  "commonField": false,
   "dto": "mapstruct",
+  "editInModal": false,
+  "entityCongigPro": "",
   "entityPackage": "system",
   "entityTableName": "sms_message",
   "extendAbstractAuditingEntity": true,
+  "extendData": false,
+  "extensibleData": false,
   "fields": [
     {
       "fieldName": "title",
@@ -66,14 +73,102 @@
       "fieldName": "remark",
       "fieldType": "String",
       "javadoc": "备注"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long",
+      "javadoc": "创建者Id",
+      "options": {
+        "extendAbstractAuditingEntity": true,
+        "fieldConfig": "hideInForm"
+      },
+      "proTitle": "创建者Id"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "创建时间",
+      "options": {
+        "extendAbstractAuditingEntity": true,
+        "fieldConfig": "hideInForm"
+      },
+      "proTitle": "创建时间"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "Long",
+      "javadoc": "修改者Id",
+      "options": {
+        "extendAbstractAuditingEntity": true,
+        "fieldConfig": "hideInForm"
+      },
+      "proTitle": "修改者Id"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "修改时间",
+      "options": {
+        "extendAbstractAuditingEntity": true,
+        "fieldConfig": "hideInForm"
+      },
+      "proTitle": "修改时间"
+    },
+    {
+      "fieldName": "delFlag",
+      "fieldType": "Boolean",
+      "javadoc": "软删除标志",
+      "options": {
+        "defaultValue": "false",
+        "fieldConfig": "hideInForm",
+        "logicDelete": true,
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除标志"
+    },
+    {
+      "fieldName": "deletedTime",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "软删除时间",
+      "options": {
+        "fieldConfig": "hideInForm",
+        "skipCriteria": true,
+        "skipDto": true
+      },
+      "proTitle": "软删除时间"
     }
   ],
+  "fieldsContainParentAndChildren": false,
+  "importData": false,
+  "importDataFile": "",
   "javadoc": "短信消息",
   "jpaMetamodelFiltering": true,
+  "listBy": "table",
+  "microServiceCore": false,
   "moduleName": "system",
+  "multiModel": false,
+  "multiModule": false,
   "name": "SmsMessage",
+  "ormTool": "mybatis",
+  "otherModuleEntities": [],
   "pagination": "pagination",
+  "publicDto": "",
+  "reflexiveRelationshipFieldNames": [],
   "relationships": [],
+  "replaceListComponentMethod": "",
+  "replaceServiceMethod": "",
+  "replaceUpdateComponentMethod": "",
+  "searchEngine": "no",
   "service": "serviceClass",
-  "skipFakeData": true
+  "skipComponent": "",
+  "skipDbSchema": false,
+  "skipFakeData": true,
+  "skipMenu": false,
+  "skipMultiTenant": false,
+  "skipRestApi": "",
+  "skipSoftDelete": false,
+  "skipWebButton": "",
+  "treeIndicatorFieldName": "",
+  "useTemplate": false
 }

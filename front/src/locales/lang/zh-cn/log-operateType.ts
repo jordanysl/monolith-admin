@@ -1,0 +1,19 @@
+export default {
+  monolithAdminApp: {
+    OperateType: {
+      null: '',
+      LIST: 'LIST',
+      ADD: 'ADD',
+      EDIT: 'EDIT',
+      DELETE: 'DELETE',
+      IMPORT: 'IMPORT',
+      EXPORT: 'EXPORT',
+      OTHER: 'OTHER',
+      LOGIN: 'LOGIN',
+      STATS: 'STATS',
+      VIEW: 'VIEW',
+      AUDIT: 'AUDIT',
+      WORK_FLOW: 'WORK_FLOW',
+    },
+  },
+};
