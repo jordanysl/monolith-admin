@@ -1,5 +1,5 @@
-import { defineComponent, reactive, ref, getCurrentInstance } from 'vue';
-import { message, Modal } from 'ant-design-vue';
+import { defineComponent, reactive, ref, getCurrentInstance, h } from 'vue';
+import { Alert, message, Modal } from 'ant-design-vue';
 import { DownOutlined, UpOutlined, UserOutlined } from '@ant-design/icons-vue';
 import { VxeGridInstance, VxeGridListeners, VxeGridProps } from 'vxe-table';
 import { getSearchQueryData } from '@/utils/jhipster/entity-utils';
