@@ -1,5 +1,5 @@
 import { dateUtil } from '@/utils/dateUtil';
-import { duplicateCheck } from '@/views/system/user/user.api';
+import userService from '@/api-service/system/user.service';
 
 export const rules = {
   rule(type, required) {
@@ -30,7 +30,7 @@ export const rules = {
         },
         trigger: 'change',
       },
-    ] as ArrayRule;
+    ];
   },
   phone(required) {
     return [
@@ -99,7 +99,7 @@ export const rules = {
       },
     ];
   },
-  duplicateCheckRule(tableName, fieldName, model, schema, required?) {
+  mobileCheckRule(model, schema, required?) {
     return [
       {
         validator: (_, value) => {
@@ -107,14 +107,14 @@ export const rules = {
             return Promise.reject(`请输入${schema.label}`);
           }
           return new Promise<void>((resolve, reject) => {
-            duplicateCheck({
-              tableName,
-              fieldName,
-              fieldVal: value,
-              dataId: model.id,
-            })
-              .then(res => {
-                res.success ? resolve() : reject(res.message || '校验失败');
+            const params: any = { mobile: value };
+            if (model.id) {
+              params['id.notEquals'] = model.id;
+            }
+            userService
+              .exist(params)
+              .then(exist => {
+                !exist ? resolve() : reject('该手机号已存在');
               })
               .catch(err => {
                 reject(err.message || '验证失败');
@@ -122,34 +122,6 @@ export const rules = {
           });
         },
       },
-    ] as ArrayRule;
+    ];
   },
 };
-
-//update-begin-author:taoyan date:2022-6-16 for: 代码生成-原生表单用
-/**
- * 唯一校验函数，给原生<a-form>使用，vben的表单校验建议使用上述rules
- * @param tableName 表名
- * @param fieldName 字段名
- * @param fieldVal 字段值
- * @param dataId 数据ID
- */
-export async function duplicateValidate(tableName, fieldName, fieldVal, dataId) {
-  try {
-    let params = {
-      tableName,
-      fieldName,
-      fieldVal,
-      dataId: dataId,
-    };
-    const res = await duplicateCheck(params);
-    if (res.success) {
-      return Promise.resolve();
-    } else {
-      return Promise.reject(res.message || '校验失败');
-    }
-  } catch (e) {
-    return Promise.reject('校验失败,可能是断网等问题导致的校验失败');
-  }
-}
-//update-end-author:taoyan date:2022-6-16 for: 代码生成-原生表单用

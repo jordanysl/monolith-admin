@@ -1,5 +1,6 @@
 import { defHttp } from '@/utils/http/axios';
 import qs from 'qs';
+import { get } from 'lodash-es';
 import buildPaginationQueryOpts from '@/utils/jhipster/sorts';
 import { PageRecord } from '@/models/baseModel';
 import { useMethods } from '@/hooks/system/useMethods';
@@ -22,6 +23,20 @@ export default {
   stats(queryParams?: any): Promise<any> {
     const options = buildPaginationQueryOpts(queryParams);
     return defHttp.get({ url: `${apiUrl}/stats?${qs.stringify(options, { arrayFormat: 'repeat' })}` });
+  },
+  exist(queryParams?: any): Promise<Boolean> {
+    if (!queryParams.hasOwnProperty('id.aggregate.count') && get(queryParams, 'id.aggregate.count')) {
+      queryParams['id.aggregate.count'] = true;
+    }
+    const options = buildPaginationQueryOpts(queryParams);
+    return new Promise((resolve, reject) => {
+      defHttp
+        .get({ url: `${apiUrl}/stats?${qs.stringify(options, { arrayFormat: 'repeat' })}` })
+        .then(res => {
+          resolve(res.data['id_count'] && res.data['id_count'] > 0);
+        })
+        .catch(err => reject(err));
+    });
   },
 
   recycleBin(paginationQuery?: any): Promise<PageRecord<IUser[]>> {

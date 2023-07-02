@@ -1,4 +1,4 @@
-import { FormSchema } from '@/components/Form/index';
+import { FormSchema } from '@/components/Form';
 import { rules } from '@/utils/helper/validator';
 
 export interface ListItem {
@@ -46,6 +46,7 @@ export const baseSetschemas: FormSchema[] = [
     field: 'login',
     component: 'Input',
     label: '登录账户',
+    dynamicDisabled: true,
     colProps: { span: 18 },
   },
   {
@@ -73,14 +74,11 @@ export const baseSetschemas: FormSchema[] = [
     colProps: { span: 18 },
   },
   {
-    field: 'phone',
+    field: 'mobile',
     component: 'Input',
     label: '联系电话',
     dynamicRules: ({ model, schema }) => {
-      return [
-        { ...rules.duplicateCheckRule('sys_user', 'phone', model, schema, false)[0] },
-        { pattern: /^1[3456789]\d{9}$/, message: '手机号码格式有误' },
-      ];
+      return [{ ...rules.mobileCheckRule(model, schema)[0] }, { pattern: /^1[3456789]\d{9}$/, message: '手机号码格式有误' }];
     },
     colProps: { span: 18 },
   },
