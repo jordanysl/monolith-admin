@@ -56,7 +56,7 @@ import { useMessage } from '@/hooks/web/useMessage';
 //   types
 import { FileItem, UploadResultStatus } from './typing';
 import { basicProps } from './props';
-import { createTableColumns, createActionColumn } from './data';
+import { createTableColumns } from './data';
 // utils
 import { checkFileType, checkImgType, getBase64WithFile } from './helper';
 import { buildUUID } from '@/utils/uuid';
@@ -282,7 +282,6 @@ export default defineComponent({
 
     return {
       columns: createTableColumns() as any[],
-      actionColumn: createActionColumn(handleRemove) as any,
       register,
       closeModal,
       getHelpText,
