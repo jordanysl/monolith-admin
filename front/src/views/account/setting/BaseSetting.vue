@@ -72,7 +72,6 @@ export default defineComponent({
     });
 
     function updateAvatar(src: string, data: string) {
-      console.log('data====》', data);
       const userinfo = userStore.getUserInfo;
       userinfo.imageUrl = data;
       userStore.setUserInfo(userinfo);
@@ -101,7 +100,7 @@ export default defineComponent({
     return {
       avatar,
       register,
-      uploadImage: uploadImageService.uploadImage,
+      uploadImage: ({ file, name, filename }) => uploadImageService.create({ uploadFile: file, name, filename }),
       updateAvatar,
       handleSubmit,
     };

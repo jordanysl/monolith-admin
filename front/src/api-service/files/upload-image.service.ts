@@ -78,7 +78,11 @@ export default {
     const params: UploadFileParams = <UploadFileParams>{};
     params.name = 'image';
     params.file = uploadImage.uploadFile as File;
-    params.filename = uploadImage!.uploadFile!.name;
+    if (uploadImage.filename) {
+        params.filename = uploadImage.filename;
+    } else {
+      params.filename = uploadImage!.uploadFile!.name;
+    }
     const newUploadImage = { ...uploadImage };
     delete newUploadImage.uploadFile;
     params.data = { uploadImageDTO: pickBy(newUploadImage, value => !!value) };

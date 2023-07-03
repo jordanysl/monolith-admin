@@ -1,19 +1,24 @@
 package com.begcode.monolith.web.rest;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.begcode.monolith.aop.logging.AutoLog;
 import com.begcode.monolith.config.Constants;
 import com.begcode.monolith.domain.User;
+import com.begcode.monolith.domain.enumeration.LogType;
+import com.begcode.monolith.domain.enumeration.OperateType;
 import com.begcode.monolith.repository.UserRepository;
 import com.begcode.monolith.security.AuthoritiesConstants;
 import com.begcode.monolith.service.MailService;
+import com.begcode.monolith.service.UserQueryService;
 import com.begcode.monolith.service.UserService;
+import com.begcode.monolith.service.criteria.UserCriteria;
 import com.begcode.monolith.service.dto.AdminUserDTO;
 import com.begcode.monolith.util.web.IPageUtil;
 import com.begcode.monolith.util.web.PageableUtils;
 import com.begcode.monolith.web.rest.errors.BadRequestAlertException;
 import com.begcode.monolith.web.rest.errors.EmailAlreadyUsedException;
 import com.begcode.monolith.web.rest.errors.LoginAlreadyUsedException;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import java.net.URI;
@@ -26,7 +31,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -90,10 +94,13 @@ public class UserResource {
 
     private final MailService mailService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    private final UserQueryService userQueryService;
+
+    public UserResource(UserService userService, UserRepository userRepository, MailService mailService, UserQueryService userQueryService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
+        this.userQueryService = userQueryService;
     }
 
     /**
@@ -177,6 +184,15 @@ public class UserResource {
         result.records(page.getRecords()).size(page.getSize()).total(page.getTotal()).page(page.getCurrent());
         HttpHeaders headers = IPageUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(result);
+    }
+
+    @GetMapping("/users/stats")
+    @Operation(tags = "根据条件对用户进行统计", description = "条件和统计的配置通过用户的Criteria类来实现")
+    @AutoLog(value = "根据条件对用户进行统计", logType = LogType.OPERATE, operateType = OperateType.STATS)
+    public ResponseEntity<List<Map<String, Object>>> stats(UserCriteria criteria) {
+        log.debug("REST request to get stats by criteria: {}", criteria);
+        List<Map<String, Object>> statsMapList = userQueryService.statsByAggregateCriteria(criteria);
+        return ResponseEntity.ok().body(statsMapList);
     }
 
     private boolean onlyContainsAllowedProperties(Pageable pageable) {

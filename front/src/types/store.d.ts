@@ -11,13 +11,15 @@ export interface LockInfo {
 }
 
 export interface UserInfo {
-  userId: string | number;
+  id: string | number;
+  login: string;
   username: string;
   realName: string;
   avatar: string;
   desc?: string;
   homePath?: string;
   roles: RoleInfo[];
+  imageUrl?: string;
 }
 
 export interface BeforeMiniState {
