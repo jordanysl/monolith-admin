@@ -75,6 +75,7 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
         OssConfig ossConfig = ossConfigMapper.toEntity(ossConfigDTO);
 
         this.saveOrUpdate(ossConfig);
+        this.initPlatforms();
         return findOne(ossConfig.getId()).get();
     }
 
@@ -90,6 +91,7 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
         OssConfig ossConfig = ossConfigMapper.toEntity(ossConfigDTO);
 
         ossConfigRepository.updateById(ossConfig);
+        this.initPlatforms();
         return findOne(ossConfigDTO.getId()).get();
     }
 
@@ -153,6 +155,7 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
         log.debug("Request to delete OssConfig : {}", id);
 
         ossConfigRepository.deleteById(id);
+        this.initPlatforms();
     }
 
     public void initPlatforms() {
