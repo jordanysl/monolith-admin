@@ -38,7 +38,7 @@ export default {
   updateImageUrl(url: string): Promise<Object> {
     return new Promise<GetUserInfoModel>((resolve, reject) => {
       defHttp
-        .put({ url: `${baseApiUrl}/account/imageUrl`, data: url }, { errorMessageMode: 'none' })
+        .put({ url: `${baseApiUrl}/account/imageUrl`, params: `?imageUrl=${url}` }, { errorMessageMode: 'none' })
         .then(res => {
           resolve(res.data);
         })
