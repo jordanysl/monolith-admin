@@ -74,6 +74,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/*.ico", "/*.png", "/*.svg", "/*.webapp").permitAll()
                     .requestMatchers("/app/**").permitAll()
                     .requestMatchers("/i18n/**").permitAll()
+                    .requestMatchers("/upload/**").permitAll()
                     .requestMatchers("/content/**").permitAll()
                     .requestMatchers("/swagger-ui/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
