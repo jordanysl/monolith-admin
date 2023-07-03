@@ -187,7 +187,7 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
                         }
                         String basePath = (String) map.get("basePath");
                         if (StringUtils.isBlank(basePath)) {
-                            basePath = "";
+                            basePath = "/upload/";
                         }
                         if (!storagePath.startsWith("/")) {
                             storagePath = SpringBootUtil.getApplicationPathEndWithSeparator() + storagePath;

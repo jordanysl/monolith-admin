@@ -176,7 +176,7 @@ public class AccountResource {
     }
 
     @PutMapping(path = "/account/imageUrl")
-    public void updateImageUrl(@RequestBody String imageUrl) {
+    public void updateImageUrl(@RequestParam("imageUrl") String imageUrl) {
         String userLogin = SecurityUtils
             .getCurrentUserLogin()
             .orElseThrow(() -> new AccountResourceException("Current user login not found"));
