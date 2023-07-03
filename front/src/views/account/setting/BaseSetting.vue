@@ -71,7 +71,7 @@ export default defineComponent({
       return getFileAccessHttpUrl(imageUrl) || headerImg;
     });
 
-    function updateAvatar(src: string, data: string) {
+    function updateAvatar({src, data}) {
       const userinfo = userStore.getUserInfo;
       userinfo.imageUrl = data;
       userStore.setUserInfo(userinfo);
@@ -85,7 +85,7 @@ export default defineComponent({
     async function handleSubmit() {
       try {
         let values = await validate();
-        values.avatar = userStore.getUserInfo.avatar;
+        values.imageUrl = userStore.getUserInfo.imageUrl;
         //提交表单
         await accountService.updateAccount(values);
         const userinfo = userStore.getUserInfo;
