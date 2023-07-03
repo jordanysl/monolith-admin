@@ -19,7 +19,7 @@ export interface UserInfo {
   desc?: string;
   homePath?: string;
   roles: RoleInfo[];
-  imageUrl?: string;
+  imageUrl: string;
 }
 
 export interface BeforeMiniState {

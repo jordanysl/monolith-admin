@@ -155,14 +155,14 @@ public class UploadImageBaseService<R extends UploadImageRepository, E extends U
         log.debug("Request to save UploadImage : {}", uploadImageDTO);
         if (!uploadImageDTO.getImage().isEmpty()) {
             final String yearAndMonth = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM"));
-            FileInfo upload = fileStorageService.of(uploadImageDTO.getImage()).setPath(yearAndMonth + File.separator).upload();
             uploadImageDTO.setCreateAt(ZonedDateTime.now());
-            uploadImageDTO.setExt(upload.getExt());
             uploadImageDTO.setFullName(uploadImageDTO.getImage().getOriginalFilename());
             uploadImageDTO.setName(uploadImageDTO.getImage().getName());
             uploadImageDTO.setFolder(yearAndMonth + File.separator);
-            uploadImageDTO.setUrl(upload.getUrl());
             uploadImageDTO.setFileSize(uploadImageDTO.getImage().getSize());
+            FileInfo upload = fileStorageService.of(uploadImageDTO.getImage()).setPlatform("local").upload();
+            uploadImageDTO.setUrl(upload.getUrl());
+            uploadImageDTO.setExt(upload.getExt());
         } else {
             throw new BadRequestAlertException("Invalid file", "UploadFile", "imagesnull");
         }

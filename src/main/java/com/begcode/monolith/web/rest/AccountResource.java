@@ -11,7 +11,6 @@ import com.begcode.monolith.service.mapper.UserMapper;
 import com.begcode.monolith.web.rest.errors.*;
 import com.begcode.monolith.web.rest.vm.KeyAndPasswordVM;
 import com.begcode.monolith.web.rest.vm.ManagedUserVM;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.util.*;
 import org.apache.commons.lang3.StringUtils;

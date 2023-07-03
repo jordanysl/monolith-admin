@@ -7,21 +7,21 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.begcode.monolith.SpringBootUtil;
 import com.begcode.monolith.oss.domain.OssConfig;
 import com.begcode.monolith.oss.repository.OssConfigRepository;
 import com.begcode.monolith.oss.service.dto.OssConfigDTO;
 import com.begcode.monolith.oss.service.mapper.OssConfigMapper;
 import com.diboot.core.binding.Binder;
 import com.diboot.core.service.impl.BaseServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.CaseFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -168,7 +168,34 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
         for (OssConfig ossConfig : ossConfigs) {
             switch (ossConfig.getProvider()) {
                 case LOCAL -> {
-                    LocalFileStorage storage = new LocalFileStorage();
+                    LocalPlusFileStorage storage = new LocalPlusFileStorage();
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    // 将json字符串转为对象
+                    String json = ossConfig.getConfigData();
+                    try {
+                        Map map = objectMapper.readValue(json, Map.class);
+                        String storagePath = (String) map.get("storagePath");
+                        if (StringUtils.isBlank(storagePath)) {
+                            storagePath = "data/";
+                        }
+                        String domain = (String) map.get("domain");
+                        if (StringUtils.isBlank(domain)) {
+                            domain = "";
+                        }
+                        String basePath = (String) map.get("basePath");
+                        if (StringUtils.isBlank(basePath)) {
+                            basePath = "";
+                        }
+                        if (!storagePath.startsWith("/")) {
+                            storagePath = SpringBootUtil.getApplicationPathEndWithSeparator() + storagePath;
+                        }
+                        storage.setStoragePath(storagePath);
+                        storage.setBasePath(basePath);
+                        storage.setDomain(domain);
+                        storage.setPlatform(ossConfig.getPlatform());
+                    } catch (JsonProcessingException e) {
+                        e.printStackTrace();
+                    }
                     storageList.add(storage);
                 }
                 case ALI -> {

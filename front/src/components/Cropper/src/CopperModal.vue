@@ -167,7 +167,7 @@ export default defineComponent({
         const blob = dataURLtoBlob(previewSource.value);
         try {
           setModalProps({ confirmLoading: true });
-          const result = await uploadApi({ name: 'image', file: blob, filename });
+          const result = await uploadApi({ name: 'image', file: blob, filename: 'copper.png' });
           emit('uploadSuccess', { source: previewSource.value, data: result.url });
           // emit('uploadSuccess', { source: previewSource.value, data: result });
           closeModal();

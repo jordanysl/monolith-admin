@@ -26,6 +26,7 @@ export default {
     const options = buildPaginationQueryOpts(queryParams);
     return defHttp.get({ url: `${apiUrl}/stats?${qs.stringify(options, { arrayFormat: 'repeat' })}` });
   },
+
   exist(queryParams?: any): Promise<Boolean> {
     if (!queryParams.hasOwnProperty('id.aggregate.count') && get(queryParams, 'id.aggregate.count')) {
       queryParams['id.aggregate.count'] = true;
