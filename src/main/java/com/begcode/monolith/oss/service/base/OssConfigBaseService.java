@@ -21,6 +21,8 @@ import com.google.common.base.CaseFormat;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,6 +170,17 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
             storage.close();
         }
         storageList.clear();
+        if (CollectionUtils.isEmpty(ossConfigs)) {
+            LocalPlusFileStorage storage = new LocalPlusFileStorage();
+            String storagePath = "data/";
+            String domain = "";
+            String basePath = "/upload/";
+            storage.setStoragePath(storagePath);
+            storage.setBasePath(basePath);
+            storage.setDomain(domain);
+            storage.setPlatform("local");
+            storageList.add(storage);
+        }
         for (OssConfig ossConfig : ossConfigs) {
             switch (ossConfig.getProvider()) {
                 case LOCAL -> {
