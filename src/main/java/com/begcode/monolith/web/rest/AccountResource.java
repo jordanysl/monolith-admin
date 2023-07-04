@@ -121,7 +121,8 @@ public class AccountResource {
             userDTO.getLastName(),
             userDTO.getEmail(),
             userDTO.getLangKey(),
-            userDTO.getImageUrl()
+            userDTO.getImageUrl(),
+            userDTO.getMobile()
         );
     }
 
@@ -182,7 +183,7 @@ public class AccountResource {
             .orElseThrow(() -> new AccountResourceException("Current user login not found"));
         userRepository
             .findOneByLogin(userLogin)
-            .ifPresent(user -> userService.updateUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getLangKey(), imageUrl)
+            .ifPresent(user -> userService.updateUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getLangKey(), imageUrl, user.getMobile())
             );
     }
 

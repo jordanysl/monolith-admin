@@ -252,7 +252,7 @@ public class UserService extends BaseServiceImpl<UserRepository, User> {
      * @param langKey   language key.
      * @param imageUrl  image URL of user.
      */
-    public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl, String mobile) {
         SecurityUtils
             .getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
@@ -264,6 +264,7 @@ public class UserService extends BaseServiceImpl<UserRepository, User> {
                 }
                 user.setLangKey(langKey);
                 user.setImageUrl(imageUrl);
+                user.setMobile(mobile);
                 userRepository.save(user);
                 this.clearUserCaches(user);
                 log.debug("Changed Information for User: {}", user);
