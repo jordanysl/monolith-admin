@@ -175,6 +175,7 @@ public class OssConfigBaseService<R extends OssConfigRepository, E extends OssCo
             String storagePath = "data/";
             String domain = "";
             String basePath = "/upload/";
+            storagePath = SpringBootUtil.getApplicationPathEndWithSeparator() + storagePath;
             storage.setStoragePath(storagePath);
             storage.setBasePath(basePath);
             storage.setDomain(domain);
