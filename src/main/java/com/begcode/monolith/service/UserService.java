@@ -225,7 +225,7 @@ public class UserService extends BaseServiceImpl<UserRepository, User> {
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .forEach(managedAuthorities::add);
-                userRepository.save(user);
+                this.createOrUpdateN2NRelations(user, List.of("authorities"));
                 this.clearUserCaches(user);
                 log.debug("Changed Information for User: {}", user);
                 return user;
@@ -367,6 +367,9 @@ public class UserService extends BaseServiceImpl<UserRepository, User> {
     }
 
     public Optional<AdminUserDTO> getUserWithAuthorities(Long id) {
-        return userRepository.findById(id).map(userMapper::userToAdminUserDTO);
+        return userRepository.findById(id).map(user -> {
+            Binder.bindRelations(user);
+            return userMapper.userToAdminUserDTO(user);
+        });
     }
 }

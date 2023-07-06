@@ -166,6 +166,34 @@ public class UserResource {
     }
 
     /**
+     * {@code PUT /admin/users} : Updates an existing User.
+     *
+     * @param userDTO the user to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated user.
+     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already in use.
+     * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already in use.
+     */
+    @PutMapping("/users/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\")")
+    public ResponseEntity<AdminUserDTO> updateUser(@PathVariable Long id, @Valid @RequestBody AdminUserDTO userDTO) {
+        log.debug("REST request to update User : {}", userDTO);
+        Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(userDTO.getEmail());
+        if (existingUser.isPresent() && (!existingUser.orElseThrow().getId().equals(userDTO.getId()))) {
+            throw new EmailAlreadyUsedException();
+        }
+        existingUser = userRepository.findOneByLogin(userDTO.getLogin().toLowerCase());
+        if (existingUser.isPresent() && (!existingUser.orElseThrow().getId().equals(userDTO.getId()))) {
+            throw new LoginAlreadyUsedException();
+        }
+        Optional<AdminUserDTO> updatedUser = userService.updateUser(userDTO);
+
+        return ResponseUtil.wrapOrNotFound(
+                updatedUser,
+                HeaderUtil.createAlert(applicationName, "userManagement.updated", userDTO.getLogin())
+        );
+    }
+
+    /**
      * {@code GET /admin/users} : get all users with all the details - calling this are only allowed for the administrators.
      *
      * @param pageable the pagination information.
