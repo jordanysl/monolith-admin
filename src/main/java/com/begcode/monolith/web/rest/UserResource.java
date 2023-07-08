@@ -96,7 +96,12 @@ public class UserResource {
 
     private final UserQueryService userQueryService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService, UserQueryService userQueryService) {
+    public UserResource(
+        UserService userService,
+        UserRepository userRepository,
+        MailService mailService,
+        UserQueryService userQueryService
+    ) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
@@ -166,7 +171,7 @@ public class UserResource {
     }
 
     /**
-     * {@code PUT /admin/users} : Updates an existing User.
+     * {@code PUT /admin/users/{id}} : Updates an existing User.
      *
      * @param userDTO the user to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated user.
@@ -175,7 +180,7 @@ public class UserResource {
      */
     @PutMapping("/users/{id}")
     @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\")")
-    public ResponseEntity<AdminUserDTO> updateUser(@PathVariable Long id, @Valid @RequestBody AdminUserDTO userDTO) {
+    public ResponseEntity<AdminUserDTO> updateUserById(@Valid @RequestBody AdminUserDTO userDTO) {
         log.debug("REST request to update User : {}", userDTO);
         Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(userDTO.getEmail());
         if (existingUser.isPresent() && (!existingUser.orElseThrow().getId().equals(userDTO.getId()))) {
@@ -188,8 +193,8 @@ public class UserResource {
         Optional<AdminUserDTO> updatedUser = userService.updateUser(userDTO);
 
         return ResponseUtil.wrapOrNotFound(
-                updatedUser,
-                HeaderUtil.createAlert(applicationName, "userManagement.updated", userDTO.getLogin())
+            updatedUser,
+            HeaderUtil.createAlert(applicationName, "userManagement.updated", userDTO.getLogin())
         );
     }
 
