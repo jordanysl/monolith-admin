@@ -35,7 +35,7 @@ export default {
       defHttp
         .get({ url: `${apiUrl}/stats?${qs.stringify(options, { arrayFormat: 'repeat' })}` })
         .then(res => {
-          resolve(res.data['id_count'] && res.data['id_count'] > 0);
+          resolve(res && res[0] && res[0]['id_count'] > 0);
         })
         .catch(err => reject(err));
     });
